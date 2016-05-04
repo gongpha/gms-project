@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>randomize()
 textloading = 0
+biome_gen()
 global.chunk = 0
 global.chunk2 = 1
 global.targetx = obj_select.x

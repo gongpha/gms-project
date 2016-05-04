@@ -15,6 +15,7 @@
   <scripts name="scripts">
     <script>scripts\terrain_gen.gml</script>
     <script>scripts\keyord.gml</script>
+    <script>scripts\biome_gen.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
@@ -24,6 +25,8 @@
     <object>objects\obj_game</object>
     <object>objects\obj_player</object>
     <object>objects\obj_select</object>
+    <object>objects\obj_gen_tree</object>
+    <object>objects\obj_blockback</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

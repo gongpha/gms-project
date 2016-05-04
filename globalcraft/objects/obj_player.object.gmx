@@ -26,9 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>vspeed = 10
+y = obj_game.hem-32
+Pspeed = 8
 image_xscale = 1
 image_yscale = 1
 instance_activate_object(obj_game)
+
 </string>
           </argument>
         </arguments>
@@ -54,7 +57,7 @@ instance_activate_object(obj_game)
             <string>
 view_xview[0] = x - (view_wview[0] / 2)
 view_yview[0] = y - (view_hview[0] / 2)
-x += (((keyord("D") - keyord("A"))*place_free(x+(keyord("D") - keyord("A")),y)))*5
+x += (((keyord("D") - keyord("A"))*place_free(x+((keyord("D") - keyord("A"))*Pspeed),y)))*Pspeed
 if keyboard_check_pressed(vk_space){vspeed = -8}
 </string>
           </argument>
