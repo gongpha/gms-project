@@ -13,9 +13,8 @@ for(xx=0;xx<chunk;xx+=1)
     {
     for(zz=0;zz<(hem - 2048);zz+=32)
     {
-    block = instance_create(((xx*32)+argument0),hem-zz,obj_blockback)
+    block = instance_create(((xx*32)+argument0),hem-zz,obj_water)
     block.ind = 9
-    block.water = 1
     water = 1
     }
     }

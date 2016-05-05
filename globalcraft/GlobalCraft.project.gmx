@@ -10,7 +10,9 @@
     <sprite>sprites\img_player</sprite>
     <sprite>sprites\img_select</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_sun</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\terrain_gen.gml</script>
@@ -27,6 +29,8 @@
     <object>objects\obj_select</object>
     <object>objects\obj_gen_tree</object>
     <object>objects\obj_blockback</object>
+    <object>objects\obj_water</object>
+    <object>objects\obj_GUI</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

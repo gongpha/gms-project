@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>34</depth>
+  <depth>-483902895</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,50 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize()
-
-biome_gen()
-global.chunk = 0
-global.chunk2 = 1
-global.targetx = obj_select.x
-global.targety = obj_select.y
-draw_text(view_xview[0]+40,view_yview[0]+20,"Loading....")
-hem = choose(56,58,43,64)*32
-view_yview[0] = hem-256
-if view_xview[0] + (view_wview[0]/2) &gt; (16*32*global.chunk)
+            <string>textloading = 0
+if !instance_exists(obj_player)
 {
-terrain_gen(global.chunk*16*32,0)
+x = (view_xview[0])
+y = (view_yview[0])
 }
-if (view_xview[0] - (view_wview[0]/2)) &lt; -((16*32*global.chunk2)+256)
-{
-terrain_gen(-(global.chunk2*16*32),1)
-}
-instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
-instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
-instance_activate_object(obj_select)
-instance_activate_object(obj_player)
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>223</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_current_room</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -85,51 +53,43 @@ instance_activate_object(obj_player)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_player){
+            <string>draw_set_colour(c_black)
+if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
-//GENE Again
-if (view_xview[0] + (view_wview[0]/2)) &gt; ((16*32*global.chunk)-(512+256))
+if textloading = 1
 {
-terrain_gen(global.chunk*16*32,0)
+draw_text(view_xview[0]+40,view_yview[0]+20,"Loading....")
 }
-if (view_xview[0] - (view_wview[0]/2)) &lt; -((16*32*global.chunk2)-(512+256))
+
+draw_text(view_xview[0]+40,view_yview[0]+90,"X:"+string(view_xview[0]))
+draw_text(view_xview[0]+40,view_yview[0]+180,"Y:"+string(view_yview[0]))
+draw_text(view_xview[0]+40,view_yview[0]+270,"existTarget:"+string(instance_exists(obj_select)))
+if instance_exists(obj_select)
 {
-terrain_gen(-(global.chunk2*16*32),1)
+draw_text(view_xview[0]+40,view_yview[0]+360,"TargetX:"+string(obj_select.x))
+draw_text(view_xview[0]+40,view_yview[0]+450,"TargetY:"+string(obj_select.y))
+
+
 }
-////////////
+else
+{
+draw_text(view_xview[0]+40,view_yview[0]+360,"TargetX:NONE")
+draw_text(view_xview[0]+40,view_yview[0]+450,"TargetY:NONE")
+}
 
 instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
 instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
-
-
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="54">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block)
-pla.ind = 4
+if instance_exists(obj_player){
+draw_set_colour(c_black)
+draw_text(view_xview[0]+40,view_yview[0]+630,"FarTarget:"+string(point_distance(obj_player.x,obj_player.y,global.targetx,global.targety)))
+draw_text(view_xview[0]+40,view_yview[0]+50,"PlayerConnect:TRUE")
+draw_set_colour(c_black)}
+else
+{draw_text(view_xview[0]+40,view_yview[0]+630,"FarTarget(fromView):"+string(point_distance(view_xview[0],view_yview[0],global.targetx,global.targety)))
+draw_set_colour(c_red)
+draw_text(view_xview[0]+40,view_yview[0]+50,"PlayerConnect:FALSE")
+draw_set_colour(c_black)}
 </string>
           </argument>
         </arguments>
@@ -152,8 +112,7 @@ pla.ind = 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-alarm[0] = 30
+            <string>textloading = 1
 </string>
           </argument>
         </arguments>

@@ -31,6 +31,8 @@ Pspeed = 8
 image_xscale = 1
 image_yscale = 1
 instance_activate_object(obj_game)
+instance_activate_object(obj_GUI)
+
 
 </string>
           </argument>
@@ -58,7 +60,11 @@ instance_activate_object(obj_game)
 view_xview[0] = x - (view_wview[0] / 2)
 view_yview[0] = y - (view_hview[0] / 2)
 x += (((keyord("D") - keyord("A"))*place_free(x+((keyord("D") - keyord("A"))*Pspeed),y)))*Pspeed
-if keyboard_check_pressed(vk_space){vspeed = -8}
+if keyboard_check_pressed(vk_space)
+{
+if !place_free(x,y+32) or place_meeting(x,y,obj_water)
+{
+vspeed = -8}}
 </string>
           </argument>
         </arguments>
@@ -286,7 +292,7 @@ if keyboard_check_pressed(vk_space){vspeed = -8}
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="4" ename="obj_select">
+    <event eventtype="4" ename="obj_block">
       <action>
         <libid>1</libid>
         <id>116</id>
@@ -336,52 +342,25 @@ if keyboard_check_pressed(vk_space){vspeed = -8}
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_block">
+    <event eventtype="9" enumb="70">
       <action>
         <libid>1</libid>
-        <id>116</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move_contact</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>direction</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>12</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>104</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_vspeed</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>instance_destroy()
+</string>
           </argument>
         </arguments>
       </action>
