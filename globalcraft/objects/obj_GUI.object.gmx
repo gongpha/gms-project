@@ -61,10 +61,10 @@ if textloading = 1
 {
 draw_text(view_xview[0]+40,view_yview[0]+20,"Loading....")
 }
-
 draw_text(view_xview[0]+40,view_yview[0]+90,"X:"+string(view_xview[0]))
 draw_text(view_xview[0]+40,view_yview[0]+180,"Y:"+string(view_yview[0]))
 draw_text(view_xview[0]+40,view_yview[0]+270,"existTarget:"+string(instance_exists(obj_select)))
+
 if instance_exists(obj_select)
 {
 draw_text(view_xview[0]+40,view_yview[0]+360,"TargetX:"+string(obj_select.x))

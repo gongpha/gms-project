@@ -3,12 +3,209 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="12" name="datafiles">
+    <datafiles number="12" name="textures">
+      <datafiles number="12" name="mobs">
+        <datafile>
+          <name>human.png</name>
+          <exists>-1</exists>
+          <size>485</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>human.png</filename>
+        </datafile>
+      </datafiles>
+      <datafiles number="12" name="blocks">
+        <datafile>
+          <name>dirt.png</name>
+          <exists>-1</exists>
+          <size>443</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>dirt.png</filename>
+        </datafile>
+        <datafile>
+          <name>grass_block_side.png</name>
+          <exists>-1</exists>
+          <size>476</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>grass_block_side.png</filename>
+        </datafile>
+        <datafile>
+          <name>grass_block_top.png</name>
+          <exists>-1</exists>
+          <size>327</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>grass_block_top.png</filename>
+        </datafile>
+        <datafile>
+          <name>water.png</name>
+          <exists>-1</exists>
+          <size>183</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>water.png</filename>
+        </datafile>
+        <datafile>
+          <name>leaves.png</name>
+          <exists>-1</exists>
+          <size>725</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>leaves.png</filename>
+        </datafile>
+        <datafile>
+          <name>log.png</name>
+          <exists>-1</exists>
+          <size>180</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>log.png</filename>
+        </datafile>
+        <datafile>
+          <name>plank.png</name>
+          <exists>-1</exists>
+          <size>872</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>plank.png</filename>
+        </datafile>
+        <datafile>
+          <name>sand.png</name>
+          <exists>-1</exists>
+          <size>390</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>sand.png</filename>
+        </datafile>
+        <datafile>
+          <name>stone.png</name>
+          <exists>-1</exists>
+          <size>285</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>stone.png</filename>
+        </datafile>
+        <datafile>
+          <name>bedrock.png</name>
+          <exists>-1</exists>
+          <size>308</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>bedrock.png</filename>
+        </datafile>
+      </datafiles>
+    </datafiles>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\img_block</sprite>
     <sprite>sprites\img_player</sprite>
     <sprite>sprites\img_select</sprite>
+    <sprite>sprites\img_playermask</sprite>
+    <sprite>sprites\img_blockmask</sprite>
+    <sprite>sprites\img_block</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sun</background>
@@ -18,6 +215,8 @@
     <script>scripts\terrain_gen.gml</script>
     <script>scripts\keyord.gml</script>
     <script>scripts\biome_gen.gml</script>
+    <script>scripts\resource_init.gml</script>
+    <script>scripts\block_init.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
@@ -31,9 +230,11 @@
     <object>objects\obj_blockback</object>
     <object>objects\obj_water</object>
     <object>objects\obj_GUI</object>
+    <object>objects\obj_BOOT</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rm_boot</room>
+    <room>rooms\rm_game</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
