@@ -50,7 +50,7 @@ instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,vi
 instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
 instance_activate_object(obj_select)
 instance_activate_object(obj_player)
-
+y = hem-32
 
 </string>
           </argument>
@@ -90,9 +90,11 @@ instance_activate_object(obj_player)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_player){
+            <string>
+if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
+if !instance_exists(obj_select){instance_activate_object(obj_select)}
 //GENE Again
 if (view_xview[0] + (view_wview[0]/2)) &gt; ((16*32*global.chunk)-(512+256))
 {
@@ -133,8 +135,10 @@ instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block)
+            <string>if obj_select.nofnp = 0{
+pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block)
 pla.ind = global.selectblock
+}
 </string>
           </argument>
         </arguments>

@@ -51,10 +51,10 @@ for(yy=0;yy<world;yy+=1)
     block.ind = 3
     }
     
-    if yy >= 100 and yy<= 101
+    if yy >= 100 and yy<= 113
     {
     if yy>= 101 and yy<= 107{
-    if choose(0,1)
+    if choose(0,1,0,0,0,0,0,0,0,0,0,0,0,0)
     {//Creating Stone
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
     block.ind = 3

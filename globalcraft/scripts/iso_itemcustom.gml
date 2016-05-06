@@ -13,4 +13,5 @@ case global.Slog:return global.Slogtop;break;
 case global.Sleaves:return check;break;
 case global.Swater:return check;break;
 case global.Ssand:return check;break;
+case global.Ssnowblock:return check;break;
 }

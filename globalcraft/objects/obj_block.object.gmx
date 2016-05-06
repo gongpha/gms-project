@@ -55,7 +55,14 @@ image_speed = 0
 image_index = ind
 //if point_distance(x,y,obj_player.x,obj_player.y)&gt; 600
 //{instance_deactivate_object(self)}
+if ind = 8{
+if place_free(x,y+1)
+{
+y += 4
+}
 
+
+}
 </string>
           </argument>
         </arguments>

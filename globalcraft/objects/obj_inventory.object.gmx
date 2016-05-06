@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -30,6 +30,8 @@
 x = (view_xview[0])
 y = (view_yview[0])
 }
+posisoblockx = (view_wview[0]/2)-(64*4.5)+8
+posisoblocky = 600+32+12
 </string>
           </argument>
         </arguments>
@@ -55,8 +57,7 @@ y = (view_yview[0])
             <string>if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
-instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
-instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
+
 
 
 
@@ -76,6 +77,44 @@ if keyboard_check_pressed(ord("6")){global.selectblock = 6}
 if keyboard_check_pressed(ord("7")){global.selectblock = 7}
 if keyboard_check_pressed(ord("8")){global.selectblock = 8}
 if keyboard_check_pressed(ord("9")){global.selectblock = 9}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+for(i=0;i&lt;=9;i+=1)
+{
+draw_sprite(img_hotbar,0,view_xview[0]+(view_wview[0]/2)-(64*4.5)+(64*i),view_yview[0]+600)
+}
+for (a=0;a&lt;=9;a+=1){
+se = a+1
+if se &gt; global.itemmax{se = global.itemmax}
+
+draw_iso_block(global.itemid[se,1],view_xview[0]+posisoblockx+(64*a),view_yview[0]+posisoblocky,4)
+if mouse_area(view_xview[0]+posisoblockx+(64*(se-1))-8,view_yview[0]+posisoblocky-45,view_xview[0]+posisoblockx+(64*(se-1))+64-8,view_yview[0]+posisoblocky+64-45)
+{
+global.selectblock = se
+}
+}
+draw_rectangle(view_xview[0]+posisoblockx+(64*(global.selectblock-1))-8,view_yview[0]+posisoblocky-45,view_xview[0]+posisoblockx+(64*(global.selectblock-1))+64-8,view_yview[0]+posisoblocky+64-45,1)
 </string>
           </argument>
         </arguments>

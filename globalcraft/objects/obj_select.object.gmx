@@ -35,6 +35,8 @@ y = (view_yview[0])
 }
 image_xscale = 1
 image_yscale = 1
+nofnp = 0
+y = obj_game.hem-32
 </string>
           </argument>
         </arguments>
@@ -57,11 +59,19 @@ image_yscale = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = floor(mouse_x/32) * 32
+            <string>
+x = floor(mouse_x/32) * 32
 y = floor(mouse_y/32) * 32
 global.targetx = x
 global.targety = y
-
+if place_meeting(x,y,obj_player)
+{
+nofnp = 1
+}
+else
+{
+nofnp = 0
+}
 </string>
           </argument>
         </arguments>

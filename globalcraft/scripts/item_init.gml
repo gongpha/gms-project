@@ -1,3 +1,6 @@
+global.itemmax = 10
+
+
 
 global.itemid[1,0] = "Grass"
 global.itemid[1,1] = global.Sgrass
@@ -25,3 +28,6 @@ global.itemid[8,1] = global.Ssand
 
 global.itemid[9,0] = "Water"
 global.itemid[9,1] = global.Swater
+
+global.itemid[10,0] = "Snow block"
+global.itemid[10,1] = global.Ssnowblock
