@@ -240,6 +240,8 @@
     <script>scripts\percent_find.gml</script>
     <script>scripts\iso_itemcustom.gml</script>
     <script>scripts\item_init.gml</script>
+    <script>scripts\head_fac.gml</script>
+    <script>scripts\playerfind_movefac.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>

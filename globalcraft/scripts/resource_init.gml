@@ -16,13 +16,13 @@ global.Sleaves = sprite_add("textures\blocks\leaves.png",0,0,0,0,0)
 global.Splayer = sprite_add("textures\mobs\human.png",0,0,0,0,0)
 
 screen_save_part("caches\textures\mobs\human_lefthead.png",0,0,Pheadsize,Pheadsize)
-global.Slefthead = sprite_add("caches\textures\mobs\human_lefthead.png",0,0,0,0,0)
+global.Slefthead = sprite_add("caches\textures\mobs\human_lefthead.png",0,0,0,12,24)
 
 screen_save_part("caches\textures\mobs\human_fronthead.png",Pheadsize,0,Pheadsize,Pheadsize)
-global.Sfronthead = sprite_add("caches\textures\mobs\human_fronthead.png",0,0,0,0,0)
+global.Sfronthead = sprite_add("caches\textures\mobs\human_fronthead.png",0,0,0,12,24)
 
 screen_save_part("caches\textures\mobs\human_righthead.png",Pheadsize*2,0,Pheadsize,Pheadsize)
-global.Srighthead = sprite_add("caches\textures\mobs\human_righthead.png",0,0,0,0,0)
+global.Srighthead = sprite_add("caches\textures\mobs\human_righthead.png",0,0,0,12,24)
 
 screen_save_part("caches\textures\mobs\human_leftbody.png",0,Pheadsize,PWidthBody,PHeightBody)
 global.Sleftbody = sprite_add("caches\textures\mobs\human_leftbody.png",0,0,0,0,0)

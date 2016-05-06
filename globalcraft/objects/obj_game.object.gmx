@@ -50,6 +50,8 @@ instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,vi
 instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
 instance_activate_object(obj_select)
 instance_activate_object(obj_player)
+
+
 </string>
           </argument>
         </arguments>
@@ -138,6 +140,34 @@ pla.ind = global.selectblock
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///IF PAUSE
+if global.pause = 1
+{instance_deactivate_all(1)
+draw_sprite(pauselog,0,0,0)
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="82">
       <action>
         <libid>1</libid>
@@ -157,6 +187,32 @@ pla.ind = global.selectblock
             <kind>1</kind>
             <string>
 alarm[0] = 30
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>screen_save("caches\system\pause.png")
+pauselog = sprite_add("caches\system\pause.png",0,0,0,1,0)
+
+global.pause = 1
 </string>
           </argument>
         </arguments>

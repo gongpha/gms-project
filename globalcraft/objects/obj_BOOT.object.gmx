@@ -32,6 +32,7 @@ resource_init()
 biome_gen()
 item_init()
 global.selectblock = 1
+global.pause = 0
 room_goto(rm_game)
 </string>
           </argument>
