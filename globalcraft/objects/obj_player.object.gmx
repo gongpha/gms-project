@@ -38,8 +38,17 @@ emc = 0
 mrt = 0
 image_speed = 0
 skin = sprite_add("skin.png",0,0,0,16,64)
-
-
+//////////
+facing = 1
+lefthandrot = 0
+righthandrot = 0
+turnlefthandrot = 0
+turnrighthandrot = 0
+leftlegrot = 0
+rightlegrot = 0
+turnleftlegrot = 0
+turnrightlegrot = 0
+rot= 0
 </string>
           </argument>
         </arguments>
@@ -62,7 +71,8 @@ skin = sprite_add("skin.png",0,0,0,16,64)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>rot = min(rot,10)
+rot = max(rot,0)
 view_xview[0] = x - (view_wview[0] / 2)
 view_yview[0] = y - (view_hview[0] / 2)
 x += (((keyord("D") - keyord("A"))*place_free(x+((keyord("D") - keyord("A"))*Pspeed),y)))*Pspeed
@@ -71,26 +81,87 @@ if keyboard_check_pressed(vk_space)
 if !place_free(x,y+32) or place_meeting(x,y,obj_water)
 {
 vspeed = -8}}
-if keyord("D") - keyord("A") != 0
- {
-  /*WALK*/
-  if ((facing != (keyord("D") - keyord("A"))) and (keyord("D") - keyord("A"))) != 0
-  {mrt = 1}
-  else
-  {mrt = 0} 
-  facing = (keyord("D") - keyord("A"))
-  walk = 1
-  if emc = 8
-  {emc = 0}
-  else
-  {emc += 1}
- }
-else
- {
-  /*STAND*/
-  walk = 0
- }
+if keyord("A"){facing -= 0.5}
+if keyord("D"){facing += 0.5}
+if facing &gt; 1{facing = 1}if facing &lt; -1{facing = -1}
 
+if keyord("A") or keyord("D"){
+rot += 1
+if turnlefthandrot = 1
+{
+lefthandrot = approach(lefthandrot,45,percent_value(20+rot,20))
+if lefthandrot = 45{
+turnlefthandrot = 0}
+}
+if turnlefthandrot = 0
+{
+lefthandrot = approach(lefthandrot,-45,percent_value(20+rot,20))
+if lefthandrot = -45{
+turnlefthandrot = 1}
+}
+
+
+//if righthandrot != -45{turnrighthandrot = 1}
+//if righthandrot = -45 and turnrighthandrot = 0{turnrighthandrot = 0}
+
+if turnrighthandrot = 1{
+righthandrot = approach(righthandrot,-45,percent_value(20+rot,20))
+if righthandrot = -45{
+turnrighthandrot = 0}
+}
+if turnrighthandrot = 0
+{
+righthandrot = approach(righthandrot,45,percent_value(20+rot,20))
+if righthandrot = 45{
+turnrighthandrot = 1}
+}
+
+
+
+
+if turnleftlegrot = 1
+{
+leftlegrot = approach(leftlegrot,45,percent_value(20+rot,20))
+if leftlegrot = 45{
+turnleftlegrot = 0}
+}
+if turnleftlegrot = 0
+{
+leftlegrot = approach(leftlegrot,-45,percent_value(20+rot,20))
+if leftlegrot = -45{
+turnleftlegrot = 1}
+}
+
+
+if turnrightlegrot = 1{
+rightlegrot = approach(rightlegrot,-45,percent_value(20+rot,20))
+if rightlegrot = -45{
+turnrightlegrot = 0}
+}
+if turnrightlegrot = 0
+{
+rightlegrot = approach(rightlegrot,45,percent_value(20+rot,20))
+if rightlegrot = 45{
+turnrightlegrot = 1}
+}
+
+
+
+
+
+}else{
+
+
+rot -= 1
+turnleftlegrot = 0
+turnrightlegrot = 0
+turnlefthandrot = 0
+turnrighthandrot = 0
+lefthandrot = approach(lefthandrot,0,percent_value(20+rot,20))
+leftlegrot = approach(leftlegrot,0,percent_value(20+rot,20))
+rightlegrot = approach(rightlegrot,0,percent_value(20+rot,20))
+righthandrot = approach(righthandrot,0,percent_value(20+rot,20))
+}
 </string>
           </argument>
         </arguments>
@@ -385,23 +456,96 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_sprite_ext(sprite_index,image_index,view_xview[0]+(view_wview[0] / 2),(view_yview[0]+(view_hview[0] / 2)),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-
+            <string>//draw_sprite_ext_eview_xview[0]+(view_wview[0] / 2)t(sprite_ext_indeview_xview[0]+(view_wview[0] / 2),image_indeview_xview[0]+(view_wview[0] / 2),view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2)),image_view_xview[0]+(view_wview[0] / 2)scale,image_view_yview[0]+(view_hview[0] / 2)scale,image_angle,image_blend,image_alpha)
 
 draw_set_color(c_white)
 
+if facing = 0{
+draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)-12+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,0,c_white,1)
+draw_sprite_ext(global.Sbody,0,view_xview[0]+(view_wview[0] / 2)-12,view_yview[0]+(view_hview[0] / 2)-80,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfronthead,0,view_xview[0]+(view_wview[0] / 2)-12,view_yview[0]+(view_hview[0] / 2)-80-24,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-24+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-12+24+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,0,c_white,1)
+}
+if facing &gt;= 0.1 and facing &lt;= 1
+{
+draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,leftlegrot,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-1+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,lefthandrot,c_white,1)
+draw_sprite_ext(global.Sleftbody,0,view_xview[0]+(view_wview[0] / 2)-1,view_yview[0]+(view_hview[0] / 2)-80,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,rightlegrot,c_white,1)
+draw_sprite_ext(global.Slefthead,0,view_xview[0]+(view_wview[0] / 2)-6,view_yview[0]+(view_hview[0] / 2)-80-24,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-1+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,righthandrot,c_white,1)
+}
+if facing &lt;= -0.1 and facing &gt;= -1
+{
+draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)-16+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,leftlegrot,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-16+2+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,lefthandrot,c_white,1)
+draw_sprite_ext(global.Srightbody,0,view_xview[0]+(view_wview[0] / 2)-16-2,view_yview[0]+(view_hview[0] / 2)-80,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)-16+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,rightlegrot,c_white,1)
+draw_sprite_ext(global.Srighthead,0,view_xview[0]+(view_wview[0] / 2)-16-6,view_yview[0]+(view_hview[0] / 2)-80-24,1,1,0,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-16+2+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,righthandrot,c_white,1)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //FRONT
 if mrt = 1
 {
-draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2)),(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
-draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2)),(view_yview[0]+(view_hview[0] / 2))-40,-1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2)),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2)),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,-1,1,c_white,1)
 
-draw_sprite_part_ext(img_player,0,16,24,24,40,(view_xview[0]+(view_wview[0] / 2))-12,(view_yview[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,16,24,24,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-12,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
 
-draw_sprite_part_ext(img_player,0,68,24,12,40,(view_xview[0]+(view_wview[0] / 2))-24,(view_yview[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
-draw_sprite_part_ext(img_player,0,68,24,12,40,(view_xview[0]+(view_wview[0] / 2))+12,(view_yview[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,68,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-24,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,68,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+12,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
 
-draw_sprite_part_ext(img_player,0,24,0,24,24,(view_xview[0]+(view_wview[0] / 2))-12,(view_yview[0]+(view_hview[0] / 2))-104,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,24,0,24,24,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-12,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-104,1,1,c_white,1)
 }
 else
 {
@@ -410,76 +554,76 @@ else
 
 if walk = 0
 { 
-draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
-draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
 }   
 else
     {
     if emc &gt;= 6
    {
-    draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(img_player,0))
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6-lengthdir_x(16,45) ,(view_yview[0]+(view_hview[0] / 2))-40+lengthdir_y(16,45),68/128   ,24/128)    
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6   ,(view_yview[0]+(view_hview[0] / 2))-40,                                      56/128   ,24/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6-12-lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-2+lengthdir_y(16,45)-8   ,56/128   ,64/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6-lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-2+lengthdir_y(16,45)    ,68/128   ,64/128)
+    draw_primitive_begin_teview_xview[0]+(view_wview[0] / 2)ture(pr_trianglestrip,sprite_ext_get_teview_xview[0]+(view_wview[0] / 2)ture(img_plaview_yview[0]+(view_hview[0] / 2)er,0))
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6-lengthdir_view_xview[0]+(view_wview[0] / 2)(16,45) ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45),68/128   ,24/128)    
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6   ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,                                      56/128   ,24/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6-12-lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-2+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)-8   ,56/128   ,64/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6-lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-2+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)    ,68/128   ,64/128)
     draw_primitive_end()
-    draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(img_player,0))
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6   ,(view_yview[0]+(view_hview[0] / 2))-40,56/128   ,24/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6+lengthdir_x(16,45) ,(view_yview[0]+(view_hview[0] / 2))-40+lengthdir_y(16,45),68/128   ,24/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6+lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-2+lengthdir_y(16,45)    ,68/128   ,64/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6+12+lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-2+lengthdir_y(16,45)-8   ,56/128   ,64/128)
+    draw_primitive_begin_teview_xview[0]+(view_wview[0] / 2)ture(pr_trianglestrip,sprite_ext_get_teview_xview[0]+(view_wview[0] / 2)ture(img_plaview_yview[0]+(view_hview[0] / 2)er,0))
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6   ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,56/128   ,24/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6+lengthdir_view_xview[0]+(view_wview[0] / 2)(16,45) ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45),68/128   ,24/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6+lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-2+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)    ,68/128   ,64/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6+12+lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-2+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)-8   ,56/128   ,64/128)
     draw_primitive_end()
 
     }   
     else
     {
-     draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
-     draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+     draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+     draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
 
     }
 }
 
-draw_sprite_part_ext(img_player,0,0,24,16,40,(view_xview[0]+(view_wview[0] / 2))-7,(view_yview[0]+(view_hview[0] / 2))-80,1,1,c_white,1)  //BODY
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,0,24,16,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-7,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-80,1,1,c_white,1)  //BODY
 if walk = 0
 { 
-draw_sprite_part_ext(img_player,0,68,24,16,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
-draw_sprite_part_ext(img_player,0,68,24,16,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,68,24,16,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,68,24,16,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-80,1,1,c_white,1)
 }
 else
 {
     if emc &gt;= 6                             //56 24
    {
-    draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(img_player,0))
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6-lengthdir_x(16,45) ,(view_yview[0]+(view_hview[0] / 2))-40-32+lengthdir_y(16,45),80/128   ,24/128)    
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6   ,(view_yview[0]+(view_hview[0] / 2))-40-32,                                         68/128   ,24/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6-12-lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-2-32+lengthdir_y(16,45)-8   ,68/128   ,64/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))+6-lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-2-32+lengthdir_y(16,45)    ,80/128   ,64/128)
+    draw_primitive_begin_teview_xview[0]+(view_wview[0] / 2)ture(pr_trianglestrip,sprite_ext_get_teview_xview[0]+(view_wview[0] / 2)ture(img_plaview_yview[0]+(view_hview[0] / 2)er,0))
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6-lengthdir_view_xview[0]+(view_wview[0] / 2)(16,45) ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40-32+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45),80/128   ,24/128)    
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6   ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40-32,                                         68/128   ,24/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6-12-lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-2-32+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)-8   ,68/128   ,64/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))+6-lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-2-32+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)    ,80/128   ,64/128)
     draw_primitive_end()
-    draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(img_player,0))
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6   ,(view_yview[0]+(view_hview[0] / 2))-40-32,                                    68/128   ,24/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6+lengthdir_x(16,45) ,(view_yview[0]+(view_hview[0] / 2))-40-32+lengthdir_y(16,45),80/128   ,24/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6+lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-32-2+lengthdir_y(16,45)    ,80/128   ,64/128)
-    draw_vertex_texture((view_xview[0]+(view_wview[0] / 2))-6+12+lengthdir_x(48,45),(view_yview[0]+(view_hview[0] / 2))-32-2+lengthdir_y(16,45)-8   ,68/128   ,64/128)
+    draw_primitive_begin_teview_xview[0]+(view_wview[0] / 2)ture(pr_trianglestrip,sprite_ext_get_teview_xview[0]+(view_wview[0] / 2)ture(img_plaview_yview[0]+(view_hview[0] / 2)er,0))
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6   ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40-32,                                    68/128   ,24/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6+lengthdir_view_xview[0]+(view_wview[0] / 2)(16,45) ,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40-32+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45),80/128   ,24/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6+lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-32-2+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)    ,80/128   ,64/128)
+    draw_verteview_xview[0]+(view_wview[0] / 2)_teview_xview[0]+(view_wview[0] / 2)ture((view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6+12+lengthdir_view_xview[0]+(view_wview[0] / 2)(48,45),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-32-2+lengthdir_view_yview[0]+(view_hview[0] / 2)(16,45)-8   ,68/128   ,64/128)
     draw_primitive_end()
 
     }   
     else
     {
-     draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
-     draw_sprite_part_ext(img_player,0,56,24,12,40,(view_xview[0]+(view_wview[0] / 2))-6,(view_yview[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+     draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
+     draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,56,24,12,40,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-6,(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-40,1,1,c_white,1)
 
     }
 }
 
-draw_sprite_part_ext(img_player,0,0,0,24,24,(view_xview[0]+(view_wview[0] / 2))-12+((facing=-1)*24),(view_yview[0]+(view_hview[0] / 2))-104,facing,1,c_white,1)
+draw_sprite_ext_part_eview_xview[0]+(view_wview[0] / 2)t(img_plaview_yview[0]+(view_hview[0] / 2)er,0,0,0,24,24,(view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2))-12+((facing=-1)*24),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2))-104,facing,1,c_white,1)
 //}
 
 
 
 }
 
-view_xview[0] = x - (view_wview[0] / 2)
-view_yview[0] = y - (view_hview[0] / 2)
+view_view_xview[0]+(view_wview[0] / 2)view[0] = view_xview[0]+(view_wview[0] / 2) - (view_wview[0] / 2)
+view_view_yview[0]+(view_hview[0] / 2)view[0] = view_yview[0]+(view_hview[0] / 2) - (view_hview[0] / 2)
 
 </string>
           </argument>
@@ -504,6 +648,8 @@ view_yview[0] = y - (view_hview[0] / 2)
           <argument>
             <kind>1</kind>
             <string>instance_destroy()
+
+
 </string>
           </argument>
         </arguments>

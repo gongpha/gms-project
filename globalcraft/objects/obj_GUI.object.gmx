@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-483902895</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -36,6 +36,64 @@ y = (view_yview[0])
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(fnt_main)
+
+if textloading = 1
+{
+draw_text_shadow(40,20,"Loading....",c_white,c_black,1)
+}
+draw_text_shadow(40,90,"X:"+string(view_xview[0]),c_white,c_black,1)
+draw_text_shadow(40,180,"Y:"+string(view_yview[0]),c_white,c_black,1)
+draw_text_shadow(40,270,"existTarget:"+string(instance_exists(obj_select)),c_white,c_black,1)
+
+if instance_exists(obj_select)
+{
+draw_text_shadow(40,360,"TargetX:"+string(obj_select.x),c_white,c_black,1)
+draw_text_shadow(40,450,"TargetY:"+string(obj_select.y),c_white,c_black,1)
+
+
+}
+else
+{
+draw_text_shadow(40,360,"TargetX:NONE",c_white,c_black,1)
+draw_text_shadow(40,450,"TargetY:NONE",c_white,c_black,1)
+}
+
+
+if instance_exists(obj_player){
+draw_set_colour(c_black)
+draw_text_shadow(40,630,"FarTarget:"+string(point_distance(obj_player.x,obj_player.y,global.targetx,global.targety)),c_white,c_black,1)
+draw_text_shadow(40,50,"PlayerConnect:TRUE",c_white,c_black,1)
+draw_text_shadow(10,100,obj_player.facing,c_white,c_black,1)
+draw_set_colour(c_black)}
+else
+{draw_text_shadow(40,630,"FarTarget(fromView):"+string(point_distance(view_xview[0],view_yview[0],global.targetx,global.targety)),c_white,c_black,1)
+draw_set_colour(c_red)
+draw_text_shadow(40,50,"PlayerConnect:FALSE",c_red,c_black,1)
+draw_set_colour(c_black)}
+draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.6",c_white,c_black,1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -53,43 +111,11 @@ y = (view_yview[0])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour(c_black)
-if instance_exists(obj_player){
+            <string>if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
-if textloading = 1
-{
-draw_text(view_xview[0]+40,view_yview[0]+20,"Loading....")
-}
-draw_text(view_xview[0]+40,view_yview[0]+90,"X:"+string(view_xview[0]))
-draw_text(view_xview[0]+40,view_yview[0]+180,"Y:"+string(view_yview[0]))
-draw_text(view_xview[0]+40,view_yview[0]+270,"existTarget:"+string(instance_exists(obj_select)))
-
-if instance_exists(obj_select)
-{
-draw_text(view_xview[0]+40,view_yview[0]+360,"TargetX:"+string(obj_select.x))
-draw_text(view_xview[0]+40,view_yview[0]+450,"TargetY:"+string(obj_select.y))
-
-
-}
-else
-{
-draw_text(view_xview[0]+40,view_yview[0]+360,"TargetX:NONE")
-draw_text(view_xview[0]+40,view_yview[0]+450,"TargetY:NONE")
-}
-
-instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
-instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
-if instance_exists(obj_player){
-draw_set_colour(c_black)
-draw_text(view_xview[0]+40,view_yview[0]+630,"FarTarget:"+string(point_distance(obj_player.x,obj_player.y,global.targetx,global.targety)))
-draw_text(view_xview[0]+40,view_yview[0]+50,"PlayerConnect:TRUE")
-draw_set_colour(c_black)}
-else
-{draw_text(view_xview[0]+40,view_yview[0]+630,"FarTarget(fromView):"+string(point_distance(view_xview[0],view_yview[0],global.targetx,global.targety)))
-draw_set_colour(c_red)
-draw_text(view_xview[0]+40,view_yview[0]+50,"PlayerConnect:FALSE")
-draw_set_colour(c_black)}
+instance_deactivate_region(view_xview[0]-64,view_yview[0]+64,view_wview[0]+64,view_hview[0]+64,0,1)
+instance_activate_region(view_xview[0]-64,view_yview[0]+64,view_wview[0]+64,view_hview[0]+64,1)
 </string>
           </argument>
         </arguments>

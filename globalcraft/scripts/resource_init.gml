@@ -13,30 +13,29 @@ global.Slog = sprite_add("textures\blocks\log.png",0,0,0,0,0)
 global.Sleaves = sprite_add("textures\blocks\leaves.png",0,0,0,0,0)
 global.Splayer = sprite_add("textures\mobs\human.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_lefthead.png",0,0,Pheadsize-1,Pheadsize-1)
-global.Sheadleft = sprite_add("caches\textures\mobs\human_lefthead.png",0,0,0,0,0)
+screen_save_part("caches\textures\mobs\human_lefthead.png",0,0,Pheadsize,Pheadsize)
+global.Slefthead = sprite_add("caches\textures\mobs\human_lefthead.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_fronthead.png",Pheadsize,0,Pheadsize-1,Pheadsize-1)
+screen_save_part("caches\textures\mobs\human_fronthead.png",Pheadsize,0,Pheadsize,Pheadsize)
 global.Sfronthead = sprite_add("caches\textures\mobs\human_fronthead.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_righthead.png",Pheadsize*2,0,Pheadsize-1,Pheadsize-1)
+screen_save_part("caches\textures\mobs\human_righthead.png",Pheadsize*2,0,Pheadsize,Pheadsize)
 global.Srighthead = sprite_add("caches\textures\mobs\human_righthead.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_leftbody.png",0,Pheadsize,PWidthBody-1,PHeightBody-1)
+screen_save_part("caches\textures\mobs\human_leftbody.png",0,Pheadsize,PWidthBody,PHeightBody)
 global.Sleftbody = sprite_add("caches\textures\mobs\human_leftbody.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_body.png",PWidthBody,Pheadsize,Pheadsize-1,PHeightBody-1)
+screen_save_part("caches\textures\mobs\human_body.png",PWidthBody,Pheadsize,Pheadsize,PHeightBody)
 global.Sbody = sprite_add("caches\textures\mobs\human_body.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_rightbody.png",PHeightBody,Pheadsize,PWidthBody-1,PHeightBody-1)
+screen_save_part("caches\textures\mobs\human_rightbody.png",PHeightBody,Pheadsize,PWidthBody,PHeightBody)
 global.Srightbody = sprite_add("caches\textures\mobs\human_rightbody.png",0,0,0,0,0)
 
-screen_save_part("caches\textures\mobs\human_frontleg.png",PWidthBody+PHeightBody,Pheadsize,PwidthLeg-1,PHeightBody-1)
-global.Sfrontleg = sprite_add("caches\textures\mobs\human_frontleg.png",0,0,0,0,0)
+screen_save_part("caches\textures\mobs\human_frontleg.png",PWidthBody+PHeightBody,Pheadsize,PwidthLeg,PHeightBody)
+global.Sfrontleg = sprite_add("caches\textures\mobs\human_frontleg.png",0,0,0,6,6)
 
-screen_save_part("caches\textures\mobs\human_frontarm.png",((PWidthBody*2)+12+Pheadsize),Pheadsize,PwidthLeg-1,PHeightBody-1)
-global.Sfrontarm = sprite_add("caches\textures\mobs\human_frontarm.png",0,0,0,0,0)
-
+screen_save_part("caches\textures\mobs\human_frontarm.png",((PWidthBody*2)+12+Pheadsize),Pheadsize,PwidthLeg,PHeightBody)
+global.Sfrontarm = sprite_add("caches\textures\mobs\human_frontarm.png",0,0,0,6,6)
 
 
 

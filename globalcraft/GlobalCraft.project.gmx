@@ -217,6 +217,10 @@
     <script>scripts\biome_gen.gml</script>
     <script>scripts\resource_init.gml</script>
     <script>scripts\block_init.gml</script>
+    <script>scripts\draw_text_shadow.gml</script>
+    <script>scripts\approach.gml</script>
+    <script>scripts\percent_value.gml</script>
+    <script>scripts\percent_find.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
