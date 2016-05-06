@@ -2,7 +2,6 @@ chunk = 16
 world = 128
 
 water = 0
-//KuyMaya Water By Kengkat
 
 
 

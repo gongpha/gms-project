@@ -3,13 +3,13 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="12" name="datafiles">
-    <datafiles number="12" name="textures">
-      <datafiles number="12" name="mobs">
+  <datafiles number="14" name="datafiles">
+    <datafiles number="14" name="textures">
+      <datafiles number="14" name="mobs">
         <datafile>
           <name>human.png</name>
           <exists>-1</exists>
-          <size>485</size>
+          <size>471</size>
           <exportAction>2</exportAction>
           <exportDir></exportDir>
           <overwrite>0</overwrite>
@@ -24,7 +24,7 @@
           <filename>human.png</filename>
         </datafile>
       </datafiles>
-      <datafiles number="12" name="blocks">
+      <datafiles number="14" name="blocks">
         <datafile>
           <name>dirt.png</name>
           <exists>-1</exists>
@@ -195,6 +195,23 @@
           </ConfigOptions>
           <filename>bedrock.png</filename>
         </datafile>
+        <datafile>
+          <name>log_top.png</name>
+          <exists>-1</exists>
+          <size>231</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>log_top.png</filename>
+        </datafile>
       </datafiles>
     </datafiles>
   </datafiles>
@@ -221,6 +238,8 @@
     <script>scripts\approach.gml</script>
     <script>scripts\percent_value.gml</script>
     <script>scripts\percent_find.gml</script>
+    <script>scripts\iso_itemcustom.gml</script>
+    <script>scripts\item_init.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
@@ -235,6 +254,7 @@
     <object>objects\obj_water</object>
     <object>objects\obj_GUI</object>
     <object>objects\obj_BOOT</object>
+    <object>objects\obj_inventory</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_boot</room>

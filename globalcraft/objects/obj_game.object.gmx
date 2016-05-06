@@ -29,8 +29,12 @@
 
 global.chunk = 0
 global.chunk2 = 1
+if instance_exists(obj_select){
 global.targetx = obj_select.x
-global.targety = obj_select.y
+global.targety = obj_select.y}
+else
+{global.targetx = 132132
+global.targety = 132132}
 draw_text(view_xview[0]+40,view_yview[0]+20,"Loading....")
 hem = choose(56,58,43,64)*32
 view_yview[0] = hem-256
@@ -128,7 +132,7 @@ instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view
           <argument>
             <kind>1</kind>
             <string>pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block)
-pla.ind = 4
+pla.ind = global.selectblock
 </string>
           </argument>
         </arguments>

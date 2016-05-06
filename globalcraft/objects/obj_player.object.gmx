@@ -32,12 +32,13 @@ image_xscale = 1
 image_yscale = 1
 instance_activate_object(obj_game)
 instance_activate_object(obj_GUI)
+instance_activate_object(obj_inventory)
+instance_create(x,y,obj_select)
 facing = -1
 walk = 0
 emc = 0
 mrt = 0
 image_speed = 0
-skin = sprite_add("skin.png",0,0,0,16,64)
 //////////
 facing = 1
 lefthandrot = 0
@@ -459,47 +460,6 @@ righthandrot = approach(righthandrot,0,percent_value(20+rot,20))
             <string>//draw_sprite_ext_eview_xview[0]+(view_wview[0] / 2)t(sprite_ext_indeview_xview[0]+(view_wview[0] / 2),image_indeview_xview[0]+(view_wview[0] / 2),view_view_xview[0]+(view_wview[0] / 2)view[0]+(view_wview[0] / 2),(view_view_yview[0]+(view_hview[0] / 2)view[0]+(view_hview[0] / 2)),image_view_xview[0]+(view_wview[0] / 2)scale,image_view_yview[0]+(view_hview[0] / 2)scale,image_angle,image_blend,image_alpha)
 
 draw_set_color(c_white)
-
-if facing = 0{
-draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)-12+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,0,c_white,1)
-draw_sprite_ext(global.Sbody,0,view_xview[0]+(view_wview[0] / 2)-12,view_yview[0]+(view_hview[0] / 2)-80,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfronthead,0,view_xview[0]+(view_wview[0] / 2)-12,view_yview[0]+(view_hview[0] / 2)-80-24,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-24+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-12+24+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,0,c_white,1)
-}
-if facing &gt;= 0.1 and facing &lt;= 1
-{
-draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,leftlegrot,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-1+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,lefthandrot,c_white,1)
-draw_sprite_ext(global.Sleftbody,0,view_xview[0]+(view_wview[0] / 2)-1,view_yview[0]+(view_hview[0] / 2)-80,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,rightlegrot,c_white,1)
-draw_sprite_ext(global.Slefthead,0,view_xview[0]+(view_wview[0] / 2)-6,view_yview[0]+(view_hview[0] / 2)-80-24,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-1+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,righthandrot,c_white,1)
-}
-if facing &lt;= -0.1 and facing &gt;= -1
-{
-draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)-16+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,leftlegrot,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-16+2+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,lefthandrot,c_white,1)
-draw_sprite_ext(global.Srightbody,0,view_xview[0]+(view_wview[0] / 2)-16-2,view_yview[0]+(view_hview[0] / 2)-80,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,view_xview[0]+(view_wview[0] / 2)-16+6,view_yview[0]+(view_hview[0] / 2)-40+6,1,1,rightlegrot,c_white,1)
-draw_sprite_ext(global.Srighthead,0,view_xview[0]+(view_wview[0] / 2)-16-6,view_yview[0]+(view_hview[0] / 2)-80-24,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,view_xview[0]+(view_wview[0] / 2)-16+2+6,view_yview[0]+(view_hview[0] / 2)-80+6,1,1,righthandrot,c_white,1)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -31,6 +31,9 @@ if !instance_exists(obj_player)
 x = (view_xview[0])
 y = (view_yview[0])
 }
+posblockx = 64
+posblocky = 128
+
 </string>
           </argument>
         </arguments>
@@ -54,7 +57,7 @@ y = (view_yview[0])
           <argument>
             <kind>1</kind>
             <string>draw_set_font(fnt_main)
-
+/*
 if textloading = 1
 {
 draw_text_shadow(40,20,"Loading....",c_white,c_black,1)
@@ -88,7 +91,34 @@ else
 draw_set_colour(c_red)
 draw_text_shadow(40,50,"PlayerConnect:FALSE",c_red,c_black,1)
 draw_set_colour(c_black)}
-draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.6",c_white,c_black,1)
+*/
+draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.7",c_white,c_black,1)
+vertex = sprite_get_texture(NOWS,0)
+draw_set_color(make_colour_rgb(150,150,150))
+draw_primitive_begin_texture(pr_trianglestrip,vertex)
+draw_vertex_texture(posblockx,posblocky-48,0,0)
+draw_vertex_texture(posblockx+48,posblocky-24,1,0)
+draw_vertex_texture(posblockx,posblocky+0,0,1)
+draw_vertex_texture(posblockx+48,posblocky+24,1,1)
+draw_primitive_end()
+
+draw_set_color(make_colour_rgb(200,200,200))
+draw_primitive_begin_texture(pr_trianglestrip,vertex)
+draw_vertex_texture(posblockx+64+32,posblocky-48,1,0)
+draw_vertex_texture(posblockx+48,posblocky-24,0,0)
+draw_vertex_texture(posblockx+64+32,posblocky,1,1)
+draw_vertex_texture(posblockx+48,posblocky+24,0,1)
+
+draw_primitive_end()
+
+vertex2 = sprite_get_texture(iso_itemcustom(NOWS),0)
+draw_set_color(make_colour_rgb(255,255,255))
+draw_primitive_begin_texture(pr_trianglestrip,vertex2)
+draw_vertex_texture(posblockx,posblocky-48,0,0)
+draw_vertex_texture(posblockx+48,posblocky-24,1,0)
+draw_vertex_texture(posblockx+48,posblocky-64-8,0,1)
+draw_vertex_texture(posblockx+64+32,posblocky-48,1,1)
+draw_primitive_end()
 </string>
           </argument>
         </arguments>
@@ -114,8 +144,9 @@ draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.6",c_white,c_black,1)
             <string>if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
-instance_deactivate_region(view_xview[0]-64,view_yview[0]+64,view_wview[0]+64,view_hview[0]+64,0,1)
-instance_activate_region(view_xview[0]-64,view_yview[0]+64,view_wview[0]+64,view_hview[0]+64,1)
+NOWS = global.itemid[global.selectblock,1]
+instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
+instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
 </string>
           </argument>
         </arguments>
