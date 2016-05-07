@@ -136,8 +136,16 @@ instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view
           <argument>
             <kind>1</kind>
             <string>if obj_select.nofnp = 0{
+if global.place = 0{
 pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block)
 pla.ind = global.selectblock
+}
+
+}
+if global.place = 1{
+pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_blockback)
+pla.ind = global.selectblock
+pla.wall = 1
 }
 </string>
           </argument>

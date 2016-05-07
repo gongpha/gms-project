@@ -240,6 +240,8 @@
     <sprite>sprites\img_blockmask</sprite>
     <sprite>sprites\img_hotbar</sprite>
     <sprite>sprites\sprite6</sprite>
+    <sprite>sprites\img_cave256</sprite>
+    <sprite>sprites\img_radio</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sun</background>
@@ -257,6 +259,7 @@
     <script>scripts\percent_find.gml</script>
     <script>scripts\iso_itemcustom.gml</script>
     <script>scripts\item_init.gml</script>
+    <script>scripts\item_add.gml</script>
     <script>scripts\head_fac.gml</script>
     <script>scripts\playerfind_movefac.gml</script>
     <script>scripts\draw_iso_block.gml</script>
@@ -272,11 +275,13 @@
     <object>objects\obj_select</object>
     <object>objects\obj_gen_tree</object>
     <object>objects\obj_blockback</object>
+    <object>objects\obj_radiochangemode</object>
     <object>objects\obj_water</object>
     <object>objects\obj_GUI</object>
     <object>objects\obj_BOOT</object>
     <object>objects\obj_inventory</object>
     <object>objects\object10</object>
+    <object>objects\obj_cave256</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_boot</room>

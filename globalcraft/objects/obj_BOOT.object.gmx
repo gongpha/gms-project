@@ -27,12 +27,13 @@
             <kind>1</kind>
             <string>global.Splayer = sprite_add("textures\mobs\human.png",0,0,0,0,0)
 draw_sprite(global.Splayer,0,0,0)
-
+global.themecolor = c_red
 resource_init()
 biome_gen()
 item_init()
 global.selectblock = 1
 global.pause = 0
+global.place = 0
 room_goto(rm_game)
 </string>
           </argument>

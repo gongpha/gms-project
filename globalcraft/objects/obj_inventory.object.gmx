@@ -32,6 +32,14 @@ y = (view_yview[0])
 }
 posisoblockx = (view_wview[0]/2)-(64*4.5)+8
 posisoblocky = 600+32+12
+
+setbt = instance_create((view_xview[0]+posisoblockx+(64*(9))-8)+32,view_yview[0]+posisoblocky-45,obj_radiochangemode)
+setbt.text = "Block"
+setbt.radio = 1
+
+setbts = instance_create((view_xview[0]+posisoblockx+(64*(9))-8)+32,view_yview[0]+posisoblocky+30,obj_radiochangemode)
+setbts.text = "Wall"
+setbt.radio = 0
 </string>
           </argument>
         </arguments>
@@ -115,6 +123,8 @@ global.selectblock = se
 }
 }
 draw_rectangle(view_xview[0]+posisoblockx+(64*(global.selectblock-1))-8,view_yview[0]+posisoblocky-45,view_xview[0]+posisoblockx+(64*(global.selectblock-1))+64-8,view_yview[0]+posisoblocky+64-45,1)
+
+
 </string>
           </argument>
         </arguments>

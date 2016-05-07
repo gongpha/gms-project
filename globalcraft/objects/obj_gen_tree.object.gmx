@@ -31,35 +31,36 @@ for(logs=0;logs&lt;=height;logs+=1)
 {
 log = instance_create(x-32,y-(32*logs),obj_blockback)
 log.ind = 6
-
+log.wall = 0
 }
 xx = x-32
 leaf1 = instance_create(xx,y-(32*logs),obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx-32,y-(32*logs),obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx+32,y-(32*logs),obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx-64,y-(32*logs),obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx+64,y-(32*logs),obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx,y-(32*logs)+32,obj_blockback)
 leaf1.ind =7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx,y-(32*logs)+64,obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx,y-(32*logs)-32,obj_blockback)
 leaf1.ind = 7
-
+leaf1.wall = 0
 leaf1 = instance_create(xx,y-(32*logs)+64,obj_blockback)
 leaf1.ind = 7
+leaf1.wall = 0
 
 
 

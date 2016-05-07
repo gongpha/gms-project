@@ -523,32 +523,6 @@ wv = view_wview[0]
 hv = view_hview[0]
 draw_set_color(c_white)
 
-if facing = 0{
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)-12+6,yv+(hv / 2)-40+6+5,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,0,c_white,1)
-draw_sprite_ext(global.Sbody,0,xv+(wv / 2)-12,yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfronthead,0,xv+(wv / 2),yv+(hv / 2)-80-24+24+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-24+6,yv+(hv / 2)-80+6+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-12+24+6,yv+(hv / 2)-80+6+5+6+4,1,1,0,c_white,1)
-}
-if facing &gt;= 0.1 and facing &lt;= 1
-{
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,leftlegrot,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-1+6,yv+(hv / 2)-80+6+5+6+4,1,1,lefthandrot,c_white,1)
-draw_sprite_ext(global.Sleftbody,0,xv+(wv / 2)-1,yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,rightlegrot,c_white,1)
-draw_sprite_ext(global.Slefthead,0,xv+(wv / 2)-6+12,yv+(hv / 2)-80-24+24+5+6+4,1,1,head_fac(rothead),c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-1+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
-}
-if facing &lt;= -0.1 and facing &gt;= -1
-{
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,leftlegrot,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-16+2+6,yv+(hv / 2)-80+6+5+6+4,1,1,lefthandrot,c_white,1)
-draw_sprite_ext(global.Srightbody,0,xv+(wv / 2)-16-2,yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,rightlegrot,c_white,1)
-draw_sprite_ext(global.Srighthead,0,xv+(wv / 2)-16-6+12,yv+(hv / 2)-80-24+24+5+6+4,1,1,head_fac(rothead),c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-16+2+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
-}
 
 
 

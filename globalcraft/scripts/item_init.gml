@@ -31,3 +31,19 @@ global.itemid[9,1] = global.Swater
 
 global.itemid[10,0] = "Snow block"
 global.itemid[10,1] = global.Ssnowblock
+global.itemid[5,1] = global.Splank
+
+global.itemid[6,0] = "Wood"
+global.itemid[6,1] = global.Slog
+
+global.itemid[7,0] = "Leaves"
+global.itemid[7,1] = global.Sleaves
+
+global.itemid[8,0] = "Sand"
+global.itemid[8,1] = global.Ssand
+
+global.itemid[9,0] = "Water"
+global.itemid[9,1] = global.Swater
+
+global.itemid[10,0] = "Snow block"
+global.itemid[10,1] = global.Ssnowblock
