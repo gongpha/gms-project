@@ -150,17 +150,10 @@ image_index = ind
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if wall = 0
-{
+            <string>
 draw_sprite(block_init(ind),0,x,y)
-}
 
-if wall = 1{
-//draw_set_colour(make_colour_rgb(150,150,150))
 
-draw_sprite_ext(block_init(ind),0,x,y,1,1,0,make_colour_rgb(150,150,150),1)
-
-}
 
 </string>
           </argument>

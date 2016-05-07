@@ -92,7 +92,7 @@ draw_set_colour(c_red)
 draw_text_shadow(40,50,"PlayerConnect:FALSE",c_red,c_black,1)
 draw_set_colour(c_black)}
 */
-draw_text_shadow(10,10,"GlobalCraft FirstBuild Chabunthu 0.0.10",c_white,c_black,1)
+draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.11",c_white,c_black,1)
 draw_text_shadow(10,30,string(fps)+" FPS",c_white,c_black,1)
 
 

@@ -49,7 +49,7 @@ for(yy=0;yy<world;yy+=1)
     block.ind = 2
     
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
-    block.ind = 2
+    block.ind = 11
     block.wall = 1
     }
     }
@@ -60,7 +60,7 @@ for(yy=0;yy<world;yy+=1)
     block.ind = 3
     
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
-    block.ind = 3
+    block.ind = 12
     block.wall = 1
     }
     
@@ -73,26 +73,18 @@ for(yy=0;yy<world;yy+=1)
     block.ind = 3
     
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
-    block.ind = 3
+    block.ind = 11
     block.wall = 1
     }
     else
     {//Creating Bedrock
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
     block.ind = 4
-    
-    block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
-    block.ind = 4
-    block.wall = 1
     }}
     else
     {//Creating Bedrock
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
     block.ind = 4
-    
-    block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
-    block.ind = 4
-    block.wall = 1
     }
     }
 }

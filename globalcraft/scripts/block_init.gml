@@ -1,4 +1,4 @@
-return global.itemid[argument0,1]
+return global.itemid[argument0,4]
 
 
 

@@ -33,13 +33,7 @@ y = (view_yview[0])
 posisoblockx = (view_wview[0]/2)-(64*4.5)+8
 posisoblocky = 600+32+12
 
-setbt = instance_create((view_xview[0]+posisoblockx+(64*(9))-8)+32,view_yview[0]+posisoblocky-45,obj_radiochangemode)
-setbt.text = "Block"
-setbt.radio = 1
 
-setbts = instance_create((view_xview[0]+posisoblockx+(64*(9))-8)+32,view_yview[0]+posisoblocky+30,obj_radiochangemode)
-setbts.text = "Wall"
-setbt.radio = 0
 </string>
           </argument>
         </arguments>
@@ -116,7 +110,7 @@ for (a=0;a&lt;=9;a+=1){
 se = a+1
 if se &gt; global.itemmax{se = global.itemmax}
 
-draw_iso_block(global.itemid[se,1],view_xview[0]+posisoblockx+(64*a),view_yview[0]+posisoblocky,4)
+draw_iso_block(global.itemid[se,4],view_xview[0]+posisoblockx+(64*a),view_yview[0]+posisoblocky,4)
 if mouse_area(view_xview[0]+posisoblockx+(64*(se-1))-8,view_yview[0]+posisoblocky-45,view_xview[0]+posisoblockx+(64*(se-1))+64-8,view_yview[0]+posisoblocky+64-45)
 {
 global.selectblock = se

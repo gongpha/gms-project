@@ -94,7 +94,7 @@ y = hem-32
 if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
-if !instance_exists(obj_select){instance_activate_object(obj_select)}
+
 //GENE Again
 if (view_xview[0] + (view_wview[0]/2)) &gt; ((16*32*global.chunk)-(512+256))
 {
@@ -108,7 +108,7 @@ terrain_gen(-(global.chunk2*16*32),1)
 
 instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
 instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
-
+if !instance_exists(obj_select){instance_activate_object(obj_select)}
 
 
 
