@@ -5,26 +5,33 @@ water = 0
 
 
 biome = 9
+biome = choose(0,0,1,(choose(0,1,1)*snowc))
+if biome = 1 
+{snowc = 1}
+else
+{snowc = 0}
 for(xx=0;xx<chunk;xx+=1)
 {water = 0
+
+
     //Creating Grass Block
     if hem > 2048
     {
     for(zz=0;zz<(hem - 2048);zz+=32)
     {
     block = instance_create(((xx*32)+argument0),hem-zz,obj_water)
-    block.ind = 9
+    block.ind = global.biome[biome,5]
     water = 1
     }
     }
     else
     {
     block = instance_create(((xx*32)+argument0),hem,obj_block)
-    block.ind = 1
+    block.ind = global.biome[biome,1]
     }
 
 //TREES
-if (choose(0,0,0,0,0,1,0,0,0,0,0,0,0,0,1) and water = 0){instance_create(((xx*32)+argument0),hem+32,global.biome[0,1])}
+if (choose(0,0,0,0,0,1,0,0,0,0,0,0,0,0,1) and water = 0){instance_create(((xx*32)+argument0),hem+32,global.biome[0,4])}
 for(yy=0;yy<world;yy+=1)
 {
     if irandom(100) = 13
@@ -41,12 +48,12 @@ for(yy=0;yy<world;yy+=1)
     {
         block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
     block.ind = 8
-    water = 8
+    water = 0
     }
     else
     {
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
-    block.ind = 2
+    block.ind = global.biome[biome,2]
     
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
     block.ind = 11
@@ -57,7 +64,7 @@ for(yy=0;yy<world;yy+=1)
     if yy > 8 and yy<= 100
     {//Creating Stone
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
-    block.ind = 3
+    block.ind = global.biome[biome,3]
     
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
     block.ind = 12
@@ -70,7 +77,7 @@ for(yy=0;yy<world;yy+=1)
     if choose(0,1,0,0,0,0,0,0,0,0,0,0,0,0)
     {//Creating Stone
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_block)
-    block.ind = 3
+    block.ind = global.biome[biome,3]
     
     block = instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_blockback)
     block.ind = 11

@@ -75,14 +75,15 @@ rot = max(rot,0)
 
 view_xview[0] = x - (view_wview[0] / 2)
 view_yview[0] = y - (view_hview[0] / 2)
-x += ((((keyord("D") - keyord("A"))*place_free(x+((keyord("D") - keyord("A"))*Pspeed),y)))*Pspeed)*playerfind_movefac()
-if keyboard_check_pressed(vk_space)
+x += (((((keyord("D") - keyord("A"))*place_free(x+((keyord("D") - keyord("A"))*Pspeed),y)))*Pspeed)*playerfind_movefac())*pick(global.block)
+if keyboard_check_pressed(vk_space) and global.block = 0
 {
 if !place_free(x,y+32) or place_meeting(x,y,obj_water)
 {
 vspeed = -8}}
 if mouse_x &lt; x {facing -= 0.5}
 if mouse_x &gt; x {facing += 0.5}
+if global.block = 1{facing = 0}
 if facing &gt; 1{facing = 1}if facing &lt; -1{facing = -1}
 
 if keyord("A") or keyord("D"){
@@ -401,34 +402,6 @@ righthandrot = -45}
     <event eventtype="4" ename="obj_block">
       <action>
         <libid>1</libid>
-        <id>116</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move_contact</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>direction</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>24</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>104</id>
         <kind>0</kind>
         <userelative>-1</userelative>
@@ -500,6 +473,41 @@ global.selectblock = max(global.selectblock,1)
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if  global.block = 0 and collision_line(mouse_x,mouse_y,obj_player.x,obj_player.y-52,obj_block,0,1) = noone or place_meeting(x,y,obj_blockback)
+{
+
+if obj_select.nofnp = 0{
+if global.place = 0{
+
+place_block(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block,global.inv[global.selectblock+27,0])
+remove_item(global.selectblock+27,1)
+}
+
+}
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -533,21 +541,21 @@ draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-12+24+6,yv+(hv / 2)-80+6+5+6+4,1,
 }
 if facing &gt;= 0.1 and facing &lt;= 1
 {
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,leftlegrot,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-1+6,yv+(hv / 2)-80+6+5+6+4,1,1,lefthandrot,c_white,1)
-draw_sprite_ext(global.Sleftbody,0,xv+(wv / 2)-1,yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,rightlegrot,c_white,1)
+draw_sprite_ext(global.Sleftleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,leftlegrot,c_white,1)
+draw_sprite_ext(global.Sleftarm,0,xv+(wv / 2)+6,yv+(hv / 2)-80+6+5+6+4,1,1,lefthandrot,c_white,1)
+draw_sprite_ext(global.Sleftbody,0,xv+(wv / 2),yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
+draw_sprite_ext(global.Sleftleg,0,xv+(wv / 2)+6,yv+(hv / 2)-40+6+5,1,1,rightlegrot,c_white,1)
 draw_sprite_ext(global.Slefthead,0,xv+(wv / 2)-6+12,yv+(hv / 2)-80-24+24+5+6+4,1,1,head_fac(rothead),c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-1+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
 }
 if facing &lt;= -0.1 and facing &gt;= -1
 {
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,leftlegrot,c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-16+2+6,yv+(hv / 2)-80+6+5+6+4,1,1,lefthandrot,c_white,1)
-draw_sprite_ext(global.Srightbody,0,xv+(wv / 2)-16-2,yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
-draw_sprite_ext(global.Sfrontleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,rightlegrot,c_white,1)
+draw_sprite_ext(global.Srightleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,leftlegrot,c_white,1)
+draw_sprite_ext(global.Srightarm,0,xv+(wv / 2)-16+6,yv+(hv / 2)-80+6+5+6+4,1,1,lefthandrot,c_white,1)
+draw_sprite_ext(global.Srightbody,0,xv+(wv / 2)-16,yv+(hv / 2)-80+5+6+4,1,1,0,c_white,1)
+draw_sprite_ext(global.Srightleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,rightlegrot,c_white,1)
 draw_sprite_ext(global.Srighthead,0,xv+(wv / 2)-16-6+12,yv+(hv / 2)-80-24+24+5+6+4,1,1,head_fac(rothead),c_white,1)
-draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-16+2+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
+draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-16+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
 }
 
 

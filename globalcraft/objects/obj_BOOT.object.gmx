@@ -25,15 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.Splayer = sprite_add("textures\mobs\human.png",0,0,0,0,0)
-draw_sprite(global.Splayer,0,0,0)
+            <string>global.Splayer[0] = sprite_add("textures\mobs\human.png",0,0,0,0,0)
+global.Splayer[1] = sprite_add("textures\mobs\steve.png",0,0,0,0,0)
+ini_open("Save.ksf")
+global.skind = ini_read_real("Player","SkinD",0)
+ini_close()
+draw_sprite(global.Splayer[floor(global.skind)],0,0,0)
 global.themecolor = c_red
 resource_init()
 biome_gen()
 item_init()
 global.selectblock = 1
 global.pause = 0
+global.block = 0
+init_inventory()
 global.place = 0
+global.pausemenu = 0
+global.inventory = 0
+global.sks = 0
 room_goto(rm_game)
 </string>
           </argument>

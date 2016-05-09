@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>randomize()
 
+
+snowc = 0
+
 global.chunk = 0
 global.chunk2 = 1
 if instance_exists(obj_select){
@@ -118,40 +121,6 @@ if !instance_exists(obj_select){instance_activate_object(obj_select)}
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="54">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if obj_select.nofnp = 0{
-if global.place = 0{
-pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block)
-pla.ind = global.selectblock
-}
-
-}
-if global.place = 1{
-pla = instance_create(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_blockback)
-pla.ind = global.selectblock
-pla.wall = 1
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -204,6 +173,49 @@ alarm[0] = 30
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if global.block = 0 or global.inventory = 1{
+if global.inventory = 1 and global.drag[0] != 0
+{
+repeat(global.drag[1]){
+drop_item(obj_player.x,obj_player.y-56,global.drag[0])
+
+global.drag[1] -= 1
+if global.drag[1] = 0
+{
+global.drag[0] = 0
+}
+}
+
+}
+global.inventory = swit(global.inventory)
+
+if global.block = 0{global.block = 1;exit;}
+if global.block = 1{global.block = 0;exit;}
+
+exit;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="27">
       <action>
         <libid>1</libid>
@@ -221,10 +233,12 @@ alarm[0] = 30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_save("caches\system\pause.png")
-pauselog = sprite_add("caches\system\pause.png",0,0,0,1,0)
-
-global.pause = 1
+            <string>if global.block = 0 or global.pausemenu = 1{
+global.block = swit(global.block)
+global.pausemenu = swit(global.pausemenu)
+//create button
+instance_create(view_xview[0]+1056,view_yview[0]+64,obj_skinchange)
+}
 </string>
           </argument>
         </arguments>

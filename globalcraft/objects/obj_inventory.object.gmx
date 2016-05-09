@@ -32,6 +32,8 @@ y = (view_yview[0])
 }
 posisoblockx = (view_wview[0]/2)-(64*4.5)+8
 posisoblocky = 600+32+12
+xlow = 0
+ylow = 0
 
 
 </string>
@@ -101,24 +103,161 @@ if keyboard_check_pressed(ord("9")){global.selectblock = 9}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-for(i=0;i&lt;=9;i+=1)
+            <string>///Draw hotbar
+if global.pausemenu = 0{
+for(i=0;i&lt;=8;i+=1)
 {
 draw_sprite(img_hotbar,0,view_xview[0]+(view_wview[0]/2)-(64*4.5)+(64*i),view_yview[0]+600)
 }
-for (a=0;a&lt;=9;a+=1){
-se = a+1
-if se &gt; global.itemmax{se = global.itemmax}
+for (a=28;a&lt;=global.invmax;a+=1){
 
-draw_iso_block(global.itemid[se,4],view_xview[0]+posisoblockx+(64*a),view_yview[0]+posisoblocky,4)
-if mouse_area(view_xview[0]+posisoblockx+(64*(se-1))-8,view_yview[0]+posisoblocky-45,view_xview[0]+posisoblockx+(64*(se-1))+64-8,view_yview[0]+posisoblocky+64-45)
+
+draw_iso_block(global.itemid[global.inv[a,0],4],view_xview[0]+posisoblockx+(64*(a-28)),view_yview[0]+posisoblocky,4)
+if global.inv[a,1] &gt;= 2
 {
-global.selectblock = se
+draw_text_shadow(view_xview[0]+posisoblockx+(64*(a-28))+32+8,view_yview[0]+posisoblocky-8,global.inv[a,1],c_white,c_black,1)
 }
 }
 draw_rectangle(view_xview[0]+posisoblockx+(64*(global.selectblock-1))-8,view_yview[0]+posisoblocky-45,view_xview[0]+posisoblockx+(64*(global.selectblock-1))+64-8,view_yview[0]+posisoblocky+64-45,1)
 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw inventory
+if global.inventory = 1{
+inx = view_xview[0]+128
+iny = view_yview[0]+128
+if keyboard_check_pressed(vk_escape){global.block = swit(global.block);global.inventory = swit(global.inventory)}
+draw_9patch(global.Gbackgui,0,inx,iny,16,view_wview[0]-256,view_hview[0]-256-32,c_white,1)
+for(in=1;in&lt;=global.invmax-9;in+=1)
+{
+if mouse_area(inx+8+(64*xlow),iny+8+(64*ylow),inx+8+(64*xlow)+64,iny+8+(64*ylow)+64)
+{
+draw_sprite(img_gui,1,inx+8+(64*xlow),iny+8+(64*ylow))
+if mouse_check_button_pressed(mb_left)
+{
+inv_drag_left(in)
+}
+if mouse_check_button_pressed(mb_right)
+{
+inv_drag_right(in)
+}
+}
+else
+{
+draw_sprite(img_gui,0,inx+8+(64*xlow),iny+8+(64*ylow))
+}
+draw_iso_block(global.itemid[global.inv[in,0],4],inx+8+(64*xlow)+10,iny+8+(64*ylow)+48,4)
+draw_set_halign(fa_right)
+draw_set_valign(fa_bottom)
+if global.inv[in,1] &gt;= 2 {
+draw_text_shadow(inx+8+(64*xlow)+64,iny+8+(64*ylow)+64,global.inv[in,1],c_white,c_black,1)
+}
 
+xlow+=1
+
+if xlow = 9
+{
+ylow += 1
+xlow = 0
+}
+}
+xlow = 0
+ylow = 0
+
+for(inh=28;inh&lt;=global.invmax;inh+=1)
+{
+if mouse_area(inx+8+(64*xlow),iny+256+(64*ylow),inx+8+(64*xlow)+64,iny+256+(64*ylow)+64)
+{
+draw_sprite(img_gui,1,inx+8+(64*xlow),iny+256+(64*ylow))
+if mouse_check_button_pressed(mb_left)
+{
+inv_drag_left(inh)
+}
+if mouse_check_button_pressed(mb_right)
+{
+inv_drag_right(inh)
+}
+}
+else
+{
+draw_sprite(img_gui,0,inx+8+(64*xlow),iny+256+(64*ylow))
+}
+draw_iso_block(global.itemid[global.inv[inh,0],4],inx+8+(64*xlow)+10,iny+256+(64*ylow)+48,4)
+draw_set_halign(fa_right)
+draw_set_valign(fa_bottom)
+if global.inv[inh,1] &gt;= 2 {
+draw_text_shadow(inx+8+(64*xlow)+64,iny+256+(64*ylow)+64,global.inv[inh,1],c_white,c_black,1)
+}
+
+xlow+=1
+
+if xlow = 9
+{
+ylow += 1
+xlow = 0
+}
+}
+xlow = 0
+ylow = 0
+draw_iso_block(global.itemid[global.drag[0],4],mouse_x+10,mouse_y+48-16,4)
+if global.drag[1] &gt;= 2 {
+draw_text_shadow(mouse_x+10+64,mouse_y+64,global.drag[1],c_white,c_black,1)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 </string>
           </argument>
         </arguments>

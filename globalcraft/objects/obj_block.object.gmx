@@ -28,7 +28,8 @@
             <string>//change speed = 0
 
 image_speed = 0
-
+breaking = 0
+breaks = 0
 </string>
           </argument>
         </arguments>
@@ -55,14 +56,45 @@ image_speed = 0
 image_index = ind
 //if point_distance(x,y,obj_player.x,obj_player.y)&gt; 600
 //{instance_deactivate_object(self)}
-if ind = 8{
+if ind = 8
+{
 if place_free(x,y+1)
 {
-y += 4
+gravity_direction = 270
+gravity = 0.5
+}
+else
+{
+gravity = 0
+}
+
 }
 
 
-}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_item">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>other.y = y-8
 </string>
           </argument>
         </arguments>
@@ -94,16 +126,16 @@ instance_destroy()
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="0">
+    <event eventtype="4" ename="obj_block">
       <action>
         <libid>1</libid>
-        <id>612</id>
+        <id>104</id>
         <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
         <exetype>1</exetype>
-        <functionname>action_if_variable</functionname>
+        <functionname>action_set_vspeed</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
@@ -111,59 +143,85 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.place</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
             <string>0</string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>203</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_kill_object</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
+        <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+breaking = 0
+breaks= 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+breaking = 0
+breaks= 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if global.block = 0{
+breaking = 1
+breaks += 0.1
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="8" enumb="0">
@@ -184,6 +242,22 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>draw_sprite(block_init(ind),0,x,y)
+if breaking = 1
+{
+if breaks &gt;= global.itemid[ind,1]{
+
+instance_destroy()
+if global.itemid[ind,7] = ""{
+dr = instance_create(x+8,y+8,obj_item)
+dr.ind = ind}
+else
+{
+script_execute(global.itemid[ind,7])
+}
+}
+draw_sprite(global.Mbreak,(breaks/global.itemid[ind,1])*3,x,y)
+
+}
 </string>
           </argument>
         </arguments>

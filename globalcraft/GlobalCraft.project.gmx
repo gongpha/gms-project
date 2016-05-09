@@ -3,9 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="17" name="datafiles">
-    <datafiles number="17" name="textures">
-      <datafiles number="17" name="mobs">
+  <datafiles number="24" name="datafiles">
+    <datafiles number="24" name="textures">
+      <datafiles number="24" name="mobs">
         <datafile>
           <name>human.png</name>
           <exists>-1</exists>
@@ -23,8 +23,25 @@
           </ConfigOptions>
           <filename>human.png</filename>
         </datafile>
+        <datafile>
+          <name>steve.png</name>
+          <exists>-1</exists>
+          <size>2776</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>steve.png</filename>
+        </datafile>
       </datafiles>
-      <datafiles number="17" name="blocks">
+      <datafiles number="24" name="blocks">
         <datafile>
           <name>dirt.png</name>
           <exists>-1</exists>
@@ -179,6 +196,23 @@
           <filename>stone.png</filename>
         </datafile>
         <datafile>
+          <name>ice.png</name>
+          <exists>-1</exists>
+          <size>165</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>ice.png</filename>
+        </datafile>
+        <datafile>
           <name>bedrock.png</name>
           <exists>-1</exists>
           <size>308</size>
@@ -263,20 +297,110 @@
           </ConfigOptions>
           <filename>stone_wall.png</filename>
         </datafile>
+        <datafile>
+          <name>snowgrass_block_side.png</name>
+          <exists>-1</exists>
+          <size>544</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>snowgrass_block_side.png</filename>
+        </datafile>
+        <datafile>
+          <name>snowgrass_block_top.png</name>
+          <exists>-1</exists>
+          <size>245</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>snowgrass_block_top.png</filename>
+        </datafile>
       </datafiles>
+      <datafiles number="24" name="misc">
+        <datafile>
+          <name>break.png</name>
+          <exists>-1</exists>
+          <size>750</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>break.png</filename>
+        </datafile>
+      </datafiles>
+    </datafiles>
+    <datafiles number="24" name="GUI">
+      <datafile>
+        <name>headdialog.png</name>
+        <exists>-1</exists>
+        <size>702</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>headdialog.png</filename>
+      </datafile>
+      <datafile>
+        <name>backgui.png</name>
+        <exists>-1</exists>
+        <size>191</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>backgui.png</filename>
+      </datafile>
     </datafiles>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\img_blockmask</sprite>
     <sprite>sprites\img_radio</sprite>
+    <sprite>sprites\img_button</sprite>
+    <sprite>sprites\img_gui</sprite>
     <sprite>sprites\img_select</sprite>
     <sprite>sprites\img_playermask</sprite>
-    <sprite>sprites\img_blockmask</sprite>
     <sprite>sprites\img_hotbar</sprite>
     <sprite>sprites\sprite6</sprite>
     <sprite>sprites\img_cave256</sprite>
-    <sprite>sprites\sprite7</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sun</background>
@@ -293,12 +417,22 @@
     <script>scripts\percent_value.gml</script>
     <script>scripts\percent_find.gml</script>
     <script>scripts\iso_itemcustom.gml</script>
-    <script>scripts\item_init.gml</script>
-    <script>scripts\item_add.gml</script>
+    <script>scripts\Items.gml</script>
     <script>scripts\head_fac.gml</script>
     <script>scripts\playerfind_movefac.gml</script>
     <script>scripts\draw_iso_block.gml</script>
     <script>scripts\mouse_area.gml</script>
+    <script>scripts\pick.gml</script>
+    <script>scripts\swit.gml</script>
+    <script>scripts\draw_9patch.gml</script>
+    <script>scripts\player_restartskin.gml</script>
+    <script>scripts\init_inventory.gml</script>
+    <script>scripts\collect_item.gml</script>
+    <script>scripts\Special.gml</script>
+    <script>scripts\BlockOptions.gml</script>
+    <script>scripts\inv_drag_left.gml</script>
+    <script>scripts\inv_drag_right.gml</script>
+    <script>scripts\remove_item.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
@@ -314,8 +448,9 @@
     <object>objects\obj_GUI</object>
     <object>objects\obj_BOOT</object>
     <object>objects\obj_inventory</object>
-    <object>objects\object10</object>
     <object>objects\obj_cave256</object>
+    <object>objects\obj_skinchange</object>
+    <object>objects\obj_item</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_boot</room>
