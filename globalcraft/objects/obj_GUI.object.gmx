@@ -28,8 +28,8 @@
             <string>textloading = 0
 if !instance_exists(obj_player)
 {
-x = (view_xview[0])
-y = (view_yview[0])
+x = obj_player.x
+y = obj_player.y
 }
 posisoblockx = (view_wview[0]/2)-(64*4.5)+8
 posisoblocky = 600+32+12
@@ -94,7 +94,7 @@ draw_set_colour(c_red)
 draw_text_shadow(40,50,"PlayerConnect:FALSE",c_red,c_black,1)
 draw_set_colour(c_black)}
 */
-draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.12",c_white,c_black,1)
+draw_text_shadow(10,10,"GlobalCraft FirstBuild 0.0.13",c_white,c_black,1)
 draw_text_shadow(10,30,string(fps)+" FPS",c_white,c_black,1)
 
 

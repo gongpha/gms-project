@@ -2,8 +2,8 @@ Pheadsize = 24
 PWidthBody = 12//Left right only
 PHeightBody = 32
 PwidthLeg = 12
-if file_exists("caches\textures\mobs\human_lefthead.png"){file_delete("caches\textures\mobs\human_lefthead.png")}
-if file_exists("caches\textures\mobs\human_fronthead.png"){file_delete("caches\textures\mobs\human_fronthead.png")}
+if file_exists("human_lefthead.png"){file_delete("human_lefthead.png")}
+if file_exists("human_fronthead.png"){file_delete("human_fronthead.png")}
 /*
 if file_exists(){file_delete()}
 if file_exists(){file_delete()}

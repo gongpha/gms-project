@@ -47,7 +47,38 @@ rightlegrot = 0
 turnleftlegrot = 0
 turnrightlegrot = 0
 rot= 0
+alarm[0] = 1
 rothead = point_direction(x-6+12,y-80,mouse_x,mouse_y)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string> if place_meeting(x,y+1,obj_block)
+ { 
+ ty = instance_position(x,y+1,obj_block)
+ if ty != noone
+ {if ty.ind = 12
+ {x += facing*0.8}}
+ }
+alarm[0] = 1
 </string>
           </argument>
         </arguments>
@@ -75,6 +106,9 @@ rot = max(rot,0)
 
 view_xview[0] = x - (view_wview[0] / 2)
 view_yview[0] = y - (view_hview[0] / 2)
+
+view_xview[1] = x - (view_wview[1] / 2)
+view_yview[1] = y - (view_hview[1] / 2)
 x += (((((keyord("D") - keyord("A"))*place_free(x+((keyord("D") - keyord("A"))*Pspeed),y)))*Pspeed)*playerfind_movefac())*pick(global.block)
 if keyboard_check_pressed(vk_space) and global.block = 0
 {
@@ -88,6 +122,7 @@ if facing &gt; 1{facing = 1}if facing &lt; -1{facing = -1}
 
 if keyord("A") or keyord("D"){
 rot += 1
+
 if turnlefthandrot = 1
 {
 lefthandrot = approach(lefthandrot,45,percent_value(20+rot,20))
@@ -168,10 +203,22 @@ if keyord("S"){facing = 0}
 if mouse_check_button(mb_left) or mouse_check_button(mb_right)
 {
 if facing = 1{
-righthandrot = 45}
+if righthandrot != 45{
+righthandrot = approach(righthandrot,45,15)}
+if righthandrot = 45
+{
+righthandrot -= 20
+}}
+
+
 if facing = -1{
-righthandrot = -45}
+if righthandrot != -45{
+righthandrot = approach(righthandrot,-45,15)}
+if righthandrot = -45
+{
+righthandrot += 20
 }
+}}
 </string>
           </argument>
         </arguments>
@@ -440,7 +487,7 @@ righthandrot = -45}
             <kind>1</kind>
             <string>
 global.selectblock += 1
-global.selectblock = min(global.selectblock,global.itemmax-3)
+global.selectblock = min(global.selectblock,9)
 global.selectblock = max(global.selectblock,1)
 </string>
           </argument>
@@ -466,7 +513,7 @@ global.selectblock = max(global.selectblock,1)
             <kind>1</kind>
             <string>
 global.selectblock -= 1
-global.selectblock = min(global.selectblock,global.itemmax)
+global.selectblock = min(global.selectblock,9)
 global.selectblock = max(global.selectblock,1)
 </string>
           </argument>
@@ -490,18 +537,19 @@ global.selectblock = max(global.selectblock,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if  global.block = 0 and collision_line(mouse_x,mouse_y,obj_player.x,obj_player.y-52,obj_block,0,1) = noone or place_meeting(x,y,obj_blockback)
-{
+            <string>if  global.block = 0 and global.inv[global.selectblock+27,0] != 0 and collision_line(mouse_x,mouse_y,obj_player.x,obj_player.y-52,obj_block,0,1) = noone or place_meeting(x,y,obj_blockback)
+{if point_distance(x,y-52,mouse_x,mouse_y) &lt;= 130{
 
 if obj_select.nofnp = 0{
 if global.place = 0{
 
-place_block(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,obj_block,global.inv[global.selectblock+27,0])
+place_block(floor(mouse_x/32) * 32,floor(mouse_y/32) * 32,global.itemid[global.inv[global.selectblock+27,0],2],global.inv[global.selectblock+27,0])
 remove_item(global.selectblock+27,1)
+obj_block.alarm[0] = 1
 }
 
 }
-
+}
 }
 </string>
           </argument>
@@ -557,10 +605,6 @@ draw_sprite_ext(global.Srightleg,0,xv+(wv / 2)-16+6,yv+(hv / 2)-40+6+5,1,1,right
 draw_sprite_ext(global.Srighthead,0,xv+(wv / 2)-16-6+12,yv+(hv / 2)-80-24+24+5+6+4,1,1,head_fac(rothead),c_white,1)
 draw_sprite_ext(global.Sfrontarm,0,xv+(wv / 2)-16+6,yv+(hv / 2)-80+6+5+6+4,1,1,righthandrot,c_white,1)
 }
-
-
-
-
 
 
 

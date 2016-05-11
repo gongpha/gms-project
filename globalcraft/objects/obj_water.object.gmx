@@ -27,7 +27,30 @@
             <kind>1</kind>
             <string>image_speed = 0
 alarm[0] = 10
-
+alarm[1] = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_index = ind
 </string>
           </argument>
         </arguments>
@@ -79,16 +102,15 @@ alarm[0] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Change image to ind
-image_index = ind
-//if point_distance(x,y,obj_player.x,obj_player.y)&gt; 600
-//{instance_deactivate_object(self)}
+            <string>
 //WATER PHYSIC
-
+if object_around()
+{ 
 if ind = 13
 {place_block(x,y,obj_block,13)
 
 instance_destroy()
+}
 }
 </string>
           </argument>

@@ -401,6 +401,7 @@
     <sprite>sprites\img_hotbar</sprite>
     <sprite>sprites\sprite6</sprite>
     <sprite>sprites\img_cave256</sprite>
+    <sprite>sprites\sprite9</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sun</background>
@@ -433,6 +434,9 @@
     <script>scripts\inv_drag_left.gml</script>
     <script>scripts\inv_drag_right.gml</script>
     <script>scripts\remove_item.gml</script>
+    <script>scripts\object_around.gml</script>
+    <script>scripts\recipe_init.gml</script>
+    <script>scripts\recipe_add.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
@@ -451,15 +455,16 @@
     <object>objects\obj_cave256</object>
     <object>objects\obj_skinchange</object>
     <object>objects\obj_item</object>
+    <object>objects\obj_light</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_boot</room>
     <room>rooms\rm_game</room>
   </rooms>
   <constants number="5">
-    <constant name="it_block">0</constant>
-    <constant name="it_wall">1</constant>
-    <constant name="it_liquid">2</constant>
+    <constant name="it_block">obj_block</constant>
+    <constant name="it_wall">obj_blockback</constant>
+    <constant name="it_liquid">obj_water</constant>
     <constant name="it_weapon">3</constant>
     <constant name="it_armor">4</constant>
   </constants>

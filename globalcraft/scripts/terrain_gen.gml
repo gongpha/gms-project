@@ -36,7 +36,7 @@ for(yy=0;yy<world;yy+=1)
 {
     if irandom(100) = 13
     {
-    instance_create(((xx*32)+argument0),(yy*32+((hem))),obj_cave256)
+    instance_create(((xx*32)+argument0),(yy*32+((hem)+256)),obj_cave256)
     }
     
     

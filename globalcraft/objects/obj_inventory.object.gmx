@@ -111,8 +111,13 @@ draw_sprite(img_hotbar,0,view_xview[0]+(view_wview[0]/2)-(64*4.5)+(64*i),view_yv
 }
 for (a=28;a&lt;=global.invmax;a+=1){
 
-
+if global.itemid[global.inv[a,0],2] = it_block{
 draw_iso_block(global.itemid[global.inv[a,0],4],view_xview[0]+posisoblockx+(64*(a-28)),view_yview[0]+posisoblocky,4)
+}
+if global.itemid[global.inv[a,0],2] = it_wall{
+draw_sprite_ext(global.itemid[global.inv[a,0],4],0,view_xview[0]+posisoblockx+(64*(a-28)),view_yview[0]+posisoblocky-36,1.5,1.5,0,c_white,1)
+}
+
 if global.inv[a,1] &gt;= 2
 {
 draw_text_shadow(view_xview[0]+posisoblockx+(64*(a-28))+32+8,view_yview[0]+posisoblocky-8,global.inv[a,1],c_white,c_black,1)
@@ -165,7 +170,12 @@ else
 {
 draw_sprite(img_gui,0,inx+8+(64*xlow),iny+8+(64*ylow))
 }
+if global.itemid[global.inv[in,0],2] = it_block{
 draw_iso_block(global.itemid[global.inv[in,0],4],inx+8+(64*xlow)+10,iny+8+(64*ylow)+48,4)
+}
+if global.itemid[global.inv[in,0],2] = it_wall{
+draw_sprite(global.itemid[global.inv[in,0],4],0,inx+8+(64*xlow)+16,iny+8+(64*ylow)+16)
+}
 draw_set_halign(fa_right)
 draw_set_valign(fa_bottom)
 if global.inv[in,1] &gt;= 2 {
@@ -201,7 +211,10 @@ else
 {
 draw_sprite(img_gui,0,inx+8+(64*xlow),iny+256+(64*ylow))
 }
-draw_iso_block(global.itemid[global.inv[inh,0],4],inx+8+(64*xlow)+10,iny+256+(64*ylow)+48,4)
+if global.itemid[global.inv[inh,0],2] = it_block{
+draw_iso_block(global.itemid[global.inv[inh,0],4],inx+8+(64*xlow)+10,iny+256+(64*ylow)+48,4)}
+if global.itemid[global.inv[inh,0],2] = it_wall{
+draw_sprite(global.itemid[global.inv[inh,0],4],0,inx+8+(64*xlow)+16,iny+256+(64*ylow)+16)}
 draw_set_halign(fa_right)
 draw_set_valign(fa_bottom)
 if global.inv[inh,1] &gt;= 2 {
@@ -218,45 +231,134 @@ xlow = 0
 }
 xlow = 0
 ylow = 0
-draw_iso_block(global.itemid[global.drag[0],4],mouse_x+10,mouse_y+48-16,4)
+
+
+//Craft list
+for(inc=0;inc&lt;28;inc+=1)
+{
+draw_sprite(img_gui,mouse_area(inx+8+(64*xlow)+576+32,iny+8+(64*ylow),inx+8+(64*xlow)+576+128-32,iny+8+(64*ylow)+64),inx+8+(64*xlow)+576+32,iny+8+(64*ylow))
+
+
+
+
+
+
+
+
+xlow+=1
+
+if xlow = 4
+{
+ylow += 1
+xlow = 0
+}
+}
+xlow = 0
+ylow = 0
+
+//Armor list
+for(ina=0;ina&lt;4;ina+=1)
+{
+draw_sprite(img_gui,mouse_area(inx+8+(64*xlow)+576+32+256+32,iny+8+(64*ylow),inx+8+(64*xlow)+576+32+256+32+64,iny+8+(64*ylow)+64),inx+8+(64*xlow)+576+32+256+32,iny+8+(64*ylow))
+
+
+
+
+ylow+=1
+
+if ylow = 4
+{
+xlow += 1
+ylow = 0
+}
+}
+xlow = 0
+ylow = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if global.itemid[global.drag[0],2] = it_block{
+draw_iso_block(global.itemid[global.drag[0],4],mouse_x+10,mouse_y+48-16,4)}
+
+if global.itemid[global.drag[0],2] = it_wall{
+draw_sprite(global.itemid[global.drag[0],4],0,mouse_x,mouse_y)}
 if global.drag[1] &gt;= 2 {
 draw_text_shadow(mouse_x+10+64,mouse_y+64,global.drag[1],c_white,c_black,1)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 </string>
           </argument>

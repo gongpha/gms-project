@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize()
+            <string>
 
 
 snowc = 0
@@ -54,7 +54,6 @@ instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view
 instance_activate_object(obj_select)
 instance_activate_object(obj_player)
 y = hem-32
-
 </string>
           </argument>
         </arguments>
@@ -93,11 +92,11 @@ y = hem-32
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/*
 if instance_exists(obj_player){
 y = obj_player.y
 x= obj_player.x}
-
+*/
 //GENE Again
 if (view_xview[0] + (view_wview[0]/2)) &gt; ((16*32*global.chunk)-(512+256))
 {
@@ -108,9 +107,10 @@ if (view_xview[0] - (view_wview[0]/2)) &lt; -((16*32*global.chunk2)-(512+256))
 terrain_gen(-(global.chunk2*16*32),1)
 }
 ////////////
-
-instance_deactivate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,0,1)
-instance_activate_region(view_xview[0]-64,view_yview[0]-64,view_wview[0]+64,view_hview[0]+64,1)
+far = 64
+fars = far/2
+instance_deactivate_region(view_xview[0]-fars,view_yview[0]-fars,view_wview[0]+far,view_hview[0]+far,0,1)
+instance_activate_region(view_xview[0]-fars,view_yview[0]-fars,view_wview[0]+far,view_hview[0]+far,1)
 if !instance_exists(obj_select){instance_activate_object(obj_select)}
 
 
@@ -139,10 +139,6 @@ if !instance_exists(obj_select){instance_activate_object(obj_select)}
           <argument>
             <kind>1</kind>
             <string>///IF PAUSE
-if global.pause = 1
-{instance_deactivate_all(1)
-draw_sprite(pauselog,0,0,0)
-}
 
 </string>
           </argument>
